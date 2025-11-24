@@ -32,15 +32,19 @@ export const generateHairSwap = async (
   styleImageBase64: string,
   options?: StyleOptions
 ): Promise<string> => {
-  // Initialize AI client per request to grab the latest process.env.API_KEY
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
+  // Initialize AI client per request to grab the latest API Key
+  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("No API Key found. Please set your Gemini API Key.");
+  }
+  const ai = new GoogleGenAI({ apiKey });
+
   const userMime = getMimeType(userImageBase64);
   const styleMime = getMimeType(styleImageBase64);
 
   // Construct dynamic instructions based on user options
   let styleInstruction = "2. Identify the hairstyle in the SECOND image and apply it to the person in the FIRST image.";
-  
+
   // Even if options are passed, for Swap, we generally prioritize the reference image unless specific overrides are requested.
   // Based on new requirements, preferences are primarily for 'Lucky', but we keep logic here just in case.
   if (options?.hairColor) {
@@ -99,8 +103,12 @@ export const generateDescriptionStyle = async (
   options?: StyleOptions
 ): Promise<string> => {
   // Initialize AI client per request
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
+  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("No API Key found. Please set your Gemini API Key.");
+  }
+  const ai = new GoogleGenAI({ apiKey });
+
   const userMime = getMimeType(userImageBase64);
 
   let specificDetails = "";
@@ -154,8 +162,12 @@ export const generateLuckyLook = async (
   options?: StyleOptions
 ): Promise<string> => {
   // Initialize AI client per request
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
+  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("No API Key found. Please set your Gemini API Key.");
+  }
+  const ai = new GoogleGenAI({ apiKey });
+
   const userMime = getMimeType(userImageBase64);
 
   let constraints = "";

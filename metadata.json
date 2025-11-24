@@ -1,0 +1,7 @@
+{
+  "name": "HairStyle AI",
+  "description": "An AI-powered application that lets users visualize different hairstyles on their own photos. Upload a selfie and a target hairstyle to swap, or try 'I'm Feeling Lucky' for a curated look based on face shape.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

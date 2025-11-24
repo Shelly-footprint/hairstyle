@@ -33,7 +33,7 @@ export const generateHairSwap = async (
   options?: StyleOptions
 ): Promise<string> => {
   // Initialize AI client per request to grab the latest API Key
-  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  const apiKey = localStorage.getItem('gemini_api_key');
   if (!apiKey) {
     throw new Error("No API Key found. Please set your Gemini API Key.");
   }
@@ -103,7 +103,7 @@ export const generateDescriptionStyle = async (
   options?: StyleOptions
 ): Promise<string> => {
   // Initialize AI client per request
-  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  const apiKey = localStorage.getItem('gemini_api_key');
   if (!apiKey) {
     throw new Error("No API Key found. Please set your Gemini API Key.");
   }
@@ -162,7 +162,7 @@ export const generateLuckyLook = async (
   options?: StyleOptions
 ): Promise<string> => {
   // Initialize AI client per request
-  const apiKey = localStorage.getItem('gemini_api_key') || process.env.API_KEY;
+  const apiKey = localStorage.getItem('gemini_api_key');
   if (!apiKey) {
     throw new Error("No API Key found. Please set your Gemini API Key.");
   }
